@@ -1,0 +1,99 @@
+body {
+        margin: 0;
+        padding: 0;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        background-color: #8DB899;
+}
+
+.fundo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        height: 100vh;
+        width: 100vw;
+}
+
+.container {
+        flex-direction: column;
+        display: flex;
+        background-color: rgb(34, 84, 60);
+        height: 55%;
+        width: 30%;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        padding: 0.5%;
+}
+
+.container input {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        margin-bottom: 3%;
+        border-radius: 10px;
+        border-width: 4px;
+        border-color: black;
+        height: 3vh;
+        width: 15vw;
+}
+
+.container h2 {
+        margin-top: -1%;
+        font-size: 1.8vw;
+}
+
+.container p {
+        display: flex;
+        margin-top: auto;
+}
+
+
+.container button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 5px;
+        border-width: 3px;
+        width: 6vw;
+        height: 4vh;
+        background-color: black;
+        color: white;
+
+}
+
+.container button:hover {
+        background-color: white;
+        color: black;
+        opacity: 0.20s;
+}
+
+.container p {
+        margin-top: 0%;
+}
+
+.container a {
+        color: black;
+}
+
+.container a:hover {
+        color: white;
+}
+
+.logo {
+        display: flex;
+        align-items: start;
+        justify-content: start;
+        text-align: start;
+        width: 100%;
+        font-size: 1.3vw;
+}
+
+.logo a{
+        text-decoration: none;
+        color: white;
+    }
+    
+    .logo a:hover{
+        opacity: 1s;
+    }
