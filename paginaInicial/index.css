@@ -1,72 +1,83 @@
-body {
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     background-color: #8DB899;
-    
+    background-size: cover; /* Ajusta a imagem para cobrir toda a área */
+    background-attachment: fixed; /* Mantém o background fixo durante o scroll */
+    overflow-x: hidden; /* Evita a rolagem horizontal */
 }
 
-.titulo {
-    color: #ffff;
-    width: fit-content;
-    font-weight: 500;
-
-}
-
-.header {
+header {
+    width: 100%;
+    height: 10%;
+    padding: 0 50px;
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    background-color: #4E855D;
-    padding: 20px 0;
+    display: flex;
+    flex-direction: row;
     z-index: 1000;
     transition: all 1s ease;
     transform: translateY(-20%);
+    background-color: #4E855D;
+    box-sizing: border-box; /* Certifica-se que padding não aumenta a largura total */
+    
 }
 
-.header:hover {
+header:hover {
     transform: translateY(0);
 }
 
-/* Estilos para o conteúdo */
+.titulo {
+    width: 10%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    color: #ffffff;
+}
+
+nav {
+    width: 90%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+}
+
+nav ul {
+    width: 55%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    list-style: none;
+    color: #ffffff;
+}
+
+ul li {
+    font-size: 20px;
+}
+
+ul li a {
+    text-decoration: none;
+    color: #ffffff;
+    transition: 0.5s;
+}
+
+nav a:hover {
+    transition: 0.5s;
+    opacity: 0.7;
+    font-size: 22px;
+}
+
 .content {
     height: 2000px; /* Para criar um scroll vertical no exemplo */
-}
-
-.header .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0 auto;
-    width: 80%;
-    max-width: 1200px;
-}
-
-.header .titulo {
-    color: #ffffff;
-    margin-left: 20px;
-}
-
-.navbar {
-    list-style: none;
-    margin-right: 20px;
-}
-
-.navbar li {
-    display: inline;
-    margin-right: 20px;
-    font-size: 20px;
-    color: #ffffff;
-}
-
-.navbar a {
-    text-decoration: none;
-    color: #ff0000;
-}
-
-.navbar a:hover {
-    opacity: 0.7;
 }
 
 .imagemPrincipal {
@@ -74,110 +85,95 @@ body {
     max-width: 400px;
     margin-left: 200px;
     transition: transform 0.5s ease; /* Transição suave */
-
-    /* Define a escala inicial da imagem */
     transform: scale(1);
 }
 
-/* Define a escala quando o mouse está sobre a imagem */
 .imagemPrincipal:hover {
     transform: scale(1.2); /* Aumenta o tamanho da imagem */
 }
 
-
 .container {
     width: 80%;
     display: flex;
-  
-    
-    
+    box-sizing: border-box; /* Certifica-se que padding não aumenta a largura total */
+    margin: 0 auto; /* Centraliza o container */
 }
 
 .header .container {
     display: flex;
     justify-content: space-between;
     background-color: #4E855D;
-        
     margin-left: 10%;
+    
 }
 
-.banner{
-  background-position: right bottom;
-    height:645px;
-    color:azure;
+.banner {
+    background-position: right bottom;
+    height: 645px;
+    color: azure;
     text-align: center;
-    
-    
-
-    
 }
 
 .banner .container {
     justify-content: center;
     align-items: center;
     height: 100%;
-
 }
 
 .banner .container p {
     font-size: 30px;
     margin-left: 50px;
-
 }
 
-
-.social{
+.social {
     background-color: #4E855D;
-    height: 750px;
+    height: 950px;
 }
 
-
-
-.social .container{
+.social .container {
     align-items: baseline;
-    height: 101%;
+    height: 90%;
     width: 100%;
     justify-content: space-around;
     flex-direction: column;
 }
 
-.social .container .relatoFutebol{
+.social .container .relatoFutebol {
     display: flex;
     flex-direction: column;
-    align-items:end;
+    align-items: end;
     text-align: center;
-
 }
 
-.mensagemFutebol h2{
-
+.mensagemFutebol h2 {
     display: flex;
-    margin-left: 330px;
-    margin-top: -70px;
+    margin-left: 200px;
+    margin-top: -200px;
+    text-align: start;
+    line-height: 1.5;  /* Adiciona espaçamento entre as linhas */
+    margin-bottom: 20px; /* Espaço abaixo do título */
 }
 
-.mensagemFutebol p{
+.mensagemFutebol p {
     display: flex;
     width: 500px;
+    font-size: medium;
     margin-top: -10px;
-    text-align: center;
+    text-align: start;
     margin-left: 200px;
+    line-height: 1.5;  /* Adiciona espaçamento entre as linhas */
+    margin-bottom: 20px; /* Espaço abaixo do parágrafo */
+    padding: 5px;  /* Espaço dentro do parágrafo */
+    letter-spacing: 0.5px; /* Espaço entre as letras */
 }
 
-.mensagemFutebol .negrito{
-    font-weight: bold;
-}
 
-
-
-.social .container .relatoFutebol{
+.social .container .relatoFutebol {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-
 }
-
 
 .imagemCampo {
     display: flex;
@@ -186,23 +182,19 @@ body {
     height: 100px;
     flex-direction: column;
     transition: transform 1s ease; /* Transição suave */
-
-    /* Define a escala inicial da imagem */
     transform: scale(1);
 }
 
-/* Define a escala quando o mouse está sobre a imagem */
 .imagemCampo:hover {
     transform: scale(1.2); /* Aumenta o tamanho da imagem */
-
 }
 
-.imagemCampo img{
+.imagemCampo img {
     display: flex;
     max-width: 450px;
-    margin-top: 95px;
-    margin-left: 800px;
-    
+    margin-top: 100px;
+    margin-left: 750px;
+    width: 400px;
 }
 
 .imagemSaude {
@@ -212,62 +204,53 @@ body {
     height: 75px;
     flex-direction: column;
     transition: transform 1s ease; /* Transição suave */
-
-    /* Define a escala inicial da imagem */
     transform: scale(1);
 }
 
-/* Define a escala quando o mouse está sobre a imagem */
 .imagemSaude:hover {
     transform: scale(1.2); /* Aumenta o tamanho da imagem */
-
-}   
-
-
-.imagemSaude img{
-    display: flex;
-    max-width: 230px;
-    margin-left: 370px;
-    margin-top: -20px;
-    
 }
 
-.social .container .relatoSaude{
+.imagemSaude img {
+    display: flex;
+    max-width: 380px;
+    margin-left: 220px;
+    margin-top: -80px;
+}
+
+.social .container .relatoSaude {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-
 }
 
+.mensagemSaude h2 {
+    display: flex;
+    text-align: start;
+    justify-content: center;
+    margin-left: 750px;
+    margin-top: -350px;
+    line-height: 1.5;  /* Adiciona espaçamento entre as linhas */
+    margin-bottom: 20px; /* Espaço abaixo do título */
+}
 
-
-
-
-.mensagemSaude p{
+.mensagemSaude p {
     display: flex;
     justify-content: center;
-    margin-left: 690px;
+    text-align: start;
+    font-size: medium;
+    margin-left: 750px;
     width: 400px;
-  
-}
+    line-height: 1.5;  /* Adiciona espaçamento entre as linhas */
+    margin-bottom: 10px; /* Espaço abaixo do parágrafo */
+    padding: 5px;  /* Espaço dentro do parágrafo */
+    letter-spacing: 0.5px; /* Espaço entre as letras */}
 
-.mensagemSaude h2{
-    display: flex;
-    justify-content: center;
-    margin-left: 690px;
-    margin-top: -130px;
-
-}
-
-
-
-.social .relato{
+.social .relato {
     display: flex;
     background-color: white;
     height: 560px;
-
-    
 }
 
 .controle {
@@ -275,19 +258,18 @@ body {
     justify-content: center;
     align-items: start;
     flex-direction: column;
-    margin-left: 400px ;
+    margin-left: 400px;
     margin-top: -100px;
-    
-    
 }
 
 .controle h2 {
     display: flex;
 }
 
-.controle p{
+.controle p {
     display: flex;
-    width: 500px;
+    font-size: larger;
+    width: 505px;
     margin-top: 10px;
     text-align: center;
 }
@@ -299,77 +281,56 @@ body {
     height: 110px;
     flex-direction: column;
     margin-left: 550px;
-    
 }
 
-.imagemJK img{
+.imagemJK img {
     display: flex;
-    max-width: 200px;
-    margin-top: 160px;
+    max-width: 300px;
+    margin-top: 194px;
 }
 
-.social .usuario{
-    display: flex;
+.social .usuario {
+    height: 100vh;
+    width: 100%;
     background-color: #4E855D;
-    height: 600px;
+}
+
+.escrever {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    
 }
 
 .escrever h2{
+    margin-top: 150px;
+}
+
+.questionario {
     display: flex;
-    margin-left: 100px;
-    margin-top: 100px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    justify-content: space-evenly;
+    margin-top: 130px;
 }
 
-.escrever input{
-    border-radius:  10px;
-    border-width: 4px;
-    
-
+.questionario img {
+    max-width: 240vw;
+    height: 19vh;
+    transition: transform 0.5s ease; /* Transição suave */
+transform: scale(1);
+cursor: pointer;
 }
 
-.escrever input::placeholder{
+
+img:hover {
+transform: scale(1.2); /* Aumenta o tamanho da imagem */
+}
+
+.questionario h2{
     text-align: center;
 }
-
-.escrever #input_nome{
-    display: flex;
-    margin-left: 100px;
-    margin-right: 100px;
-    height: 30px;
-    width: 300px;
-}
-
-.escrever #input_escrever{
-    display: flex;
-    margin-left: 100px;
-    margin-right: 100px;
-    width: 410px;
-    height: 180px;
-    padding: 10px 10px 100px
-    
-}
-
-
-
-.escrever button{
-    display: flex;
-    margin-left: 550px;
-    margin-top: -37px;
-    height: 30px;
-    width: 100px;
-   background-color: black;
-    color: white;
-    border-radius: 10px;
-    padding: 5px 30px;
-    cursor: pointer;
-}
-
-.escrever button:hover{
-    background-color: white;
-    color: black;
-    opacity: 0.20s;
-}
-
 
 .footer {
     display: flex;
@@ -377,11 +338,10 @@ body {
     height: 50px;
 }
 
-
-.mensagemFooter{
+.mensagemFooter {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 450px;    
+    margin-left: 450px;
 }
 
