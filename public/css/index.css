@@ -152,6 +152,7 @@ nav a:hover {
     text-align: start;
     line-height: 1.5;  /* Adiciona espaçamento entre as linhas */
     margin-bottom: 20px; /* Espaço abaixo do título */
+    color: white;
 }
 
 .mensagemFutebol p {
@@ -165,6 +166,7 @@ nav a:hover {
     margin-bottom: 20px; /* Espaço abaixo do parágrafo */
     padding: 5px;  /* Espaço dentro do parágrafo */
     letter-spacing: 0.5px; /* Espaço entre as letras */
+    color: white;
 }
 
 
@@ -233,6 +235,7 @@ nav a:hover {
     margin-top: -350px;
     line-height: 1.5;  /* Adiciona espaçamento entre as linhas */
     margin-bottom: 20px; /* Espaço abaixo do título */
+    color: white;
 }
 
 .mensagemSaude p {
@@ -245,11 +248,14 @@ nav a:hover {
     line-height: 1.5;  /* Adiciona espaçamento entre as linhas */
     margin-bottom: 10px; /* Espaço abaixo do parágrafo */
     padding: 5px;  /* Espaço dentro do parágrafo */
-    letter-spacing: 0.5px; /* Espaço entre as letras */}
+    letter-spacing: 0.5px; /* Espaço entre as letras */
+    color: white;
+}
 
 .social .relato {
     display: flex;
-    background-color: white;
+    background-color: #8DB899;
+    color: white;
     height: 560px;
 }
 
@@ -304,23 +310,25 @@ nav a:hover {
 
 .escrever h2{
     margin-top: 150px;
+   width: 300px;
+   color: white;
 }
 
 .questionario {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     width: 100%;
-    justify-content: space-evenly;
-    margin-top: 130px;
+    margin-top: 90px;
+    flex-direction: column;
 }
 
 .questionario img {
-    max-width: 240vw;
-    height: 19vh;
+    height: 23vh;
     transition: transform 0.5s ease; /* Transição suave */
 transform: scale(1);
 cursor: pointer;
+margin-top: 10px;
 }
 
 
@@ -328,9 +336,10 @@ img:hover {
 transform: scale(1.2); /* Aumenta o tamanho da imagem */
 }
 
-.questionario h4{
+.questionario h5{
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    color: white;
 }
 
 .footer {

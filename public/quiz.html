@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz de Conhecimentos Gerais</title>
+    <link rel="stylesheet" href="./css/quiz.css">
+</head>
+<body>
+
+
+
+    <div class="box-maior">
+        <div class="titulo">
+          <a href="./dashboard/inicio.html"> <h1>FutLife</h1> </a>
+        </div>
+        <div class="start-container" id="start">
+            <div class="inicio">
+                <h1>Bem-Vindo ao Quiz!</h1>
+            </div>
+            <h2>Vamos começar?</h2>
+            <button id="start-btn">Começar</button>
+        </div>
+        <div class="quiz-container" id="quiz" style="display: none;">
+            <div class="quiz-header">
+                <h2 id="question">Question text</h2>
+                <ul>
+                    <li>
+                        <input type="radio" id="a" name="answer" class="answer">
+                        <label for="a" id="a_text">Answer</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="b" name="answer" class="answer">
+                        <label for="b" id="b_text">Answer</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="c" name="answer" class="answer">
+                        <label for="c" id="c_text">Answer</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="d" name="answer" class="answer">
+                        <label for="d" id="d_text">Answer</label>
+                    </li>
+                </ul>
+            </div>
+            <button id="submit">Submit</button>
+        </div>
+
+    </div>
+    <script src="./js/quiz.js"></script>
+</body>
+</html>

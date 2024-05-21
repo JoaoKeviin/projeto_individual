@@ -1,17 +1,19 @@
 var usuarioModel = require("../models/usuarioModel");
-var aquarioModel = require("../models/aquarioModel");
 
 function autenticar(req, res) {
-    var nome = req.body.nomeServer;
-    var senha = req.body.senhaServer;
+    var email = req.body.email;
+    var senha = req.body.senha;
+    console.log("AQUI")
+    console.log(email)
+    console.log(senha)
 
-    if (nome == undefined) {
+    if (email == undefined) {
         res.status(400).send("Seu email está undefined!");
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está indefinida!");
     } else {
 
-        usuarioModel.autenticar(nome, senha)
+        usuarioModel.autenticar(email,senha)
             .then(
                 function (resultadoAutenticar) {
                     console.log(`\nResultados encontrados: ${resultadoAutenticar.length}`);
@@ -20,19 +22,12 @@ function autenticar(req, res) {
                     if (resultadoAutenticar.length == 1) {
                         console.log(resultadoAutenticar);
 
-                        aquarioModel.buscarAquariosPorEmpresa
-                            .then((resultadoAquarios) => {
-                                if (resultadoAquarios.length > 0) {
-                                    res.json({
-                                        idUsuario: resultadoAutenticar[0].idUsuario,
-                                        email: resultadoAutenticar[0].email,
-                                        nome: resultadoAutenticar[0].nome,
-                                        senha: resultadoAutenticar[0].senha,
-                                    });
-                                } else {
-                                    res.status(204).json({ aquarios: [] });
-                                }
-                            })
+                        res.json({
+                            idUsuario: resultadoAutenticar[0].idUsuario,
+                            email: resultadoAutenticar[0].email,
+                            nome: resultadoAutenticar[0].nome,
+                            senha: resultadoAutenticar[0].senha,
+                        });
                     } else if (resultadoAutenticar.length == 0) {
                         res.status(403).send("Email e/ou senha inválido(s)");
                     } else {
@@ -52,9 +47,9 @@ function autenticar(req, res) {
 
 function cadastrar(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
-    var nome = req.body.nomeServer;
-    var email = req.body.emailServer;
-    var senha = req.body.senhaServer;
+    var nome = req.body.nome;
+    var email = req.body.email;
+    var senha = req.body.senha;
 
 
     // Faça as validações dos valores
