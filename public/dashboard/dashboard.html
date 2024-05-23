@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./dashboard.css">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="header">
+        <div class="titulo">
+            <h1>FutLife</h1>
+        </div>
+        <div class="nav">
+            <ul>
+
+                <li>Seja Bem Vindo ao Ranking</li>
+                <li>|</li>
+                <li><a href="../dashboard/inicio.html">Exit</a></li>
+                <li> Olá, <span id="b_usuario"> usuário</span>!</li>
+            </ul>
+        </div>
+    </div>
+
+    
+    <div id="graficos">
+        <div class="ranking">
+            <canvas id="myChart"></canvas>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+
+
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+
+
+
+        const ctx = document.getElementById('myChart').getContext('2d');
+        
+        const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+        gradient.addColorStop(0, 'rgba(0,212,255,1)');
+        gradient.addColorStop(1, 'rgba(111,251,174,1)');
+
+        const myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Usuario A', 'Usuario x', 'Usuario Y', 'Usuario Z', 'Usuario C', 'UsuarioB', 'UsuarioD'],
+                datasets: [{
+                    label: 'Pontos usuário',
+                    backgroundColor: gradient,
+                    borderWidth: 2,
+                    borderColor: 'black',
+                    data: [5, 2, 2, 2, 2, 2, 2],
+                    hoverBackgroundColor: '#4E855D'
+
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        suggestedMin: 0,
+                        suggestedMax: 5,
+                        ticks: {
+                            color: 'black',
+                            font: {
+                                size: 30
+                            }
+                        },
+                        grid: {
+                            color: '#256737'
+                        },
+                        beginAtZero: true
+                    },
+                    x: {
+                        ticks: {
+                            color: 'black',
+                            font: {
+                                size: 20
+                            }
+                        },
+                        grid: {
+                            color: '#256737'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: 'black',
+                            font: {
+                                size: 21
+                            }
+                        }
+                    }
+                }
+
+            }
+        });
+    </script>

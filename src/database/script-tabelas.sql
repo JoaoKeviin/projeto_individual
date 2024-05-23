@@ -17,3 +17,15 @@ nome varchar(45),
 email varchar(100),
 senha varchar(45));
 
+create table quiz(
+idQuiz int primary key,
+Nome varchar(100));
+
+create table resultado(
+idResultado int auto_increment,
+fkUsuario int,
+fkQuiz int,
+primary key(idResultado, fkUsuario, fkQuiz),
+foreign key(fkUsuario) references usuario(idUsuario),
+foreign key(fkQuiz) references quiz(idQuiz),
+pontos int);

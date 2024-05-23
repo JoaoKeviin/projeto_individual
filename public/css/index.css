@@ -26,6 +26,7 @@ header {
     transform: translateY(-20%);
     background-color: #4E855D;
     box-sizing: border-box; /* Certifica-se que padding não aumenta a largura total */
+    border-bottom: 2px solid white;
     
 }
 
@@ -188,7 +189,8 @@ nav a:hover {
 }
 
 .imagemCampo:hover {
-    transform: scale(1.2); /* Aumenta o tamanho da imagem */
+    transform: scale(1); /* Aumenta o tamanho da imagem */
+    transition: 1s;
 }
 
 .imagemCampo img {
@@ -210,13 +212,14 @@ nav a:hover {
 }
 
 .imagemSaude:hover {
-    transform: scale(1.2); /* Aumenta o tamanho da imagem */
+    transform: scale(1); /* Aumenta o tamanho da imagem */
+    transition: 1s;
 }
 
 .imagemSaude img {
     display: flex;
     max-width: 380px;
-    margin-left: 220px;
+    margin-left: 250px;
     margin-top: -80px;
 }
 
@@ -241,7 +244,7 @@ nav a:hover {
 .mensagemSaude p {
     display: flex;
     justify-content: center;
-    text-align: start;
+    text-align: right;
     font-size: medium;
     margin-left: 750px;
     width: 400px;

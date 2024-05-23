@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/inicio.css">
     <title>Document</title>
 </head>
+
 <body>
 
     <div class="header">
@@ -17,19 +19,33 @@
                 <li><a href="../index.html">Exit</a></li>
                 <li>|</li>
                 <li><a href="../quiz.html">Quiz</a></li>
-                <li><a href="cadastro.html">Ranking</a></li>
+                <li><a href="./dashboard.html">Ranking</a></li>
                 <li> <a href="">Olá, <span id="b_usuario">usuário</span>!</a></li>
             </ul>
         </div>
-        
-        
+    </div>
+
+    <div class="controle">
+        <div class="questionario1">
+            <img src="../assets/imgquestionario.png" alt="">
+            <p>Responda agora o Quiz de conhecimentos gerais sobre a Sáude, se divirta<p>
+            <button>Quiz</button>
+        </div>
+        <div class="Ranking">
+            <img src="../assets/imgRanking.png" alt="">
+            <p>Veja o ranking das ultimas 5 pessoas que responderam o Quiz</p>
+            <button>Ranking</button>
+        </div>
+
     </div>
 
 
-    
+
+
 </body>
+
 </html>
- 
+
 <script>
-      b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 </script>

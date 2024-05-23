@@ -1,82 +1,140 @@
-const quizData = [
+// Dados do quiz
+var quizPerguntas = [
     {
-        question: "Qual é o maior oceano do mundo?",
-        a: "Oceano Atlântico",
-        b: "Oceano Índico",
-        c: "Oceano Pacífico",
-        d: "Oceano Ártico",
-        correct: "c",
+        pergunta: "Qual o nome do principal órgão afetado pela entorse em jogadores de futebol?",
+        a: "Músculo",
+        b: "Ligamentos",
+        c: "Ossos",
+        d: "Pulmão",
+        correto: "b",
     },
     {
-        question: "Quem escreveu 'Dom Quixote'?",
-        a: "William Shakespeare",
-        b: "Gabriel García Márquez",
-        c: "Miguel de Cervantes",
-        d: "Fernando Pessoa",
-        correct: "c",
+        pergunta: "O que os jogadores devem fazer antes de um jogo para evitar lesões?",
+        a: "Alongamento",
+        b: "Beber refrigerante",
+        c: "Descansar",
+        d: "Meditar",
+        correto: "a",
+    },
+    {
+        pergunta: "Qual a bebida mais recomendada para os jogadores durante um jogo?",
+        a: "Guaravita",
+        b: "Café",
+        c: "Suco de frutas",
+        d: "Água",
+        correto: "d",
+    },
+    {
+        pergunta: "O que é avaliado no Teste de Cooper?",
+        a: "Aptidão aeróbica",
+        b: "Força muscular",
+        c: "Flexibilidade",
+        d: "Agilidade",
+        correto: "a",
+    },
+    {
+        pergunta: "Qual a importância da alimentação na saúde dos jogadores?",
+        a: "Ajuda na recuperação muscular",
+        b: "Não é importante",
+        c: "Causa problemas de saúde",
+        d: "Causa Instabilidade na partida",
+        correto: "a",
     },
     // Adicione mais perguntas aqui
 ];
 
-const startContainer = document.getElementById('start');
-const startBtn = document.getElementById('start-btn');
-const quiz = document.getElementById('quiz');
-const answerEls = document.querySelectorAll('.answer');
-const questionEl = document.getElementById('question');
-const a_text = document.getElementById('a_text');
-const b_text = document.getElementById('b_text');
-const c_text = document.getElementById('c_text');
-const d_text = document.getElementById('d_text');
-const submitBtn = document.getElementById('submit');
+// Elementos DOM
+var startContainer = document.getElementById('start');
+var startBtn = document.getElementById('start-btn');
+var quizContainer = document.getElementById('quiz');
+var respostaEls = document.querySelectorAll('.answer');
+var perguntaEl = document.getElementById('question');
+var a_text = document.getElementById('a_text');
+var b_text = document.getElementById('b_text');
+var c_text = document.getElementById('c_text');
+var d_text = document.getElementById('d_text');
+var submitBtn = document.getElementById('submit');
+var ID_USUARIO = sessionStorage.getItem("ID_USUARIO");
+var fkQuiz = 1;
 
-let currentQuiz = 0;
-let score = 0;
+var quizAtual = 0;
+var pontuacao = 0;
 
-startBtn.addEventListener('click', () => {
+// Iniciar quiz
+startBtn.addEventListener('click', function() {
     startContainer.style.display = 'none';
-    quiz.style.display = 'block';
-    loadQuiz();
+    quizContainer.style.display = 'block';
+    carregarQuiz();
 });
 
-function loadQuiz() {
-    deselectAnswers();
-    const currentQuizData = quizData[currentQuiz];
-    questionEl.innerText = currentQuizData.question;
-    a_text.innerText = currentQuizData.a;
-    b_text.innerText = currentQuizData.b;
-    c_text.innerText = currentQuizData.c;
-    d_text.innerText = currentQuizData.d;
+// Carregar pergunta e respostas
+function carregarQuiz() {
+    desmarcarRespostas();
+    var perguntaAtual = quizPerguntas[quizAtual];
+    perguntaEl.innerText = perguntaAtual.pergunta;
+    a_text.innerText = perguntaAtual.a;
+    b_text.innerText = perguntaAtual.b;
+    c_text.innerText = perguntaAtual.c;
+    d_text.innerText = perguntaAtual.d;
 }
 
-function deselectAnswers() {
-    answerEls.forEach(answerEl => answerEl.checked = false);
+// Desmarcar todas as respostas
+function desmarcarRespostas() {
+    respostaEls.forEach(function(respostaEl) {
+        respostaEl.checked = false;
+    });
 }
 
-function getSelected() {
-    let answer;
-    answerEls.forEach(answerEl => {
-        if (answerEl.checked) {
-            answer = answerEl.id;
+// Obter resposta selecionada
+function obterSelecionada() {
+    var resposta;
+    respostaEls.forEach(function(respostaEl) {
+        if (respostaEl.checked) {
+            resposta = respostaEl.id;
         }
     });
-    return answer;
+    return resposta;
 }
 
-submitBtn.addEventListener('click', () => {
-    const answer = getSelected();
-    if (answer) {
-        if (answer === quizData[currentQuiz].correct) {
-            score++;
+// Enviar resposta e carregar próxima pergunta
+submitBtn.addEventListener('click', function() {
+    var resposta = obterSelecionada();
+    if (resposta) {
+        if (resposta == quizPerguntas[quizAtual].correto) {
+            pontuacao++;
         }
-        currentQuiz++;
-        if (currentQuiz < quizData.length) {
-            loadQuiz();
+        quizAtual++;
+        if (quizAtual < quizPerguntas.length) {
+            carregarQuiz();
         } else {
-            quiz.innerHTML = `
-                <h2 style="margin-top: 120px;">Você respondeu corretamente ${score}/${quizData.length} perguntas.</h2>
-                <button onclick="location.reload()">Recomeçar</button>
-            `;
+            // Enviar resultado ao servidor
+            fetch(`/resultado/registrar/${ID_USUARIO}`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    scoreServer: pontuacao, 
+                    quizServer: fkQuiz
+                }),
+            })
+            .then(function(response) {
+                return response.json();
+            })
+            .then(function(data) {
+                console.log("Resultado registrado com sucesso:", data);
+                quizContainer.innerHTML = `
+                    <h2 style="margin-top: 130px;">Você respondeu corretamente ${pontuacao}/${quizPerguntas.length} perguntas.</h2>
+                    <button onclick="location.reload()">Recomeçar</button>
+                `;
+            })
+            .catch(function(error) {
+                console.error("Erro ao registrar o resultado:", error);
+                quizContainer.innerHTML = `
+                    <h2 style="margin-top: 120px;">Você respondeu corretamente ${pontuacao}/${quizPerguntas.length} perguntas.</h2>
+                    <button onclick="location.reload()">Recomeçar</button>
+                `;
+            });
         }
     }
 });
-
