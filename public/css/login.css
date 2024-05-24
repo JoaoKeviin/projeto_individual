@@ -16,6 +16,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
+    background: linear-gradient(45deg, #152e1a, transparent);
 }   
 
 .logo a{
@@ -79,6 +80,7 @@ body{
     width: 30%;     
     height: 50%;
     margin-right: 10px;
+    background: linear-gradient(45deg, #70e28f, transparent);;
     
 }
 

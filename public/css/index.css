@@ -27,6 +27,7 @@ header {
     background-color: #4E855D;
     box-sizing: border-box; /* Certifica-se que padding não aumenta a largura total */
     border-bottom: 2px solid white;
+    background: linear-gradient(45deg, #628c6c, transparent);
     
 }
 
@@ -113,6 +114,7 @@ nav a:hover {
     height: 645px;
     color: azure;
     text-align: center;
+   background: linear-gradient(45deg, #3d724b, transparent);
 }
 
 .banner .container {
@@ -260,6 +262,10 @@ nav a:hover {
     background-color: #8DB899;
     color: white;
     height: 560px;
+}
+
+.relato{
+    background: linear-gradient(45deg, #3d724b, transparent);;
 }
 
 .controle {
