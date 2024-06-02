@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color:#8DB899;
+    background: linear-gradient(45deg, #164715, transparent);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -34,7 +34,7 @@ color: #ffffff;
 
 
 .start-container, .quiz-container {
-    background:#4E855D;     
+    background: linear-gradient(45deg, #0e4412, transparent);   
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 400px;

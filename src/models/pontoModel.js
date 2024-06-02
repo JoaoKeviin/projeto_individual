@@ -1,11 +1,17 @@
-var database = require("../database/config")
+var database = require("../database/config");
 
+function buscarUltimasMedidasGlobal(limite_linhas) {
 
-function selecionarPonto(fkUsuario) {
-    var instrucao = `select pontos from resultado where fkUsuario = ${fkUsuario};`
-    return database.executar(instrucao);
+    var instrucaoSql = `SELECT nome, max(pontos) AS pontuacao FROM usuario 
+                    JOIN resultado ON idUsuario = fkUsuario 
+                    GROUP BY idUsuario`;
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
 }
 
 module.exports = {
-    selecionarPonto
+    buscarUltimasMedidasGlobal,
+ 
 }
+

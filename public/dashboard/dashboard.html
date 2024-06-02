@@ -5,12 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <title>Document</title>
 </head>
 
-<body>
+<body     onload="exibirGrafico()">
 
-    <div class="header">
+    <div class="header" >
         <div class="titulo">
             <h1>FutLife</h1>
         </div>
@@ -25,81 +26,125 @@
         </div>
     </div>
 
-    
-    <div id="graficos">
-        <div class="ranking">
-            <canvas id="myChart"></canvas>
-        </div>
-    </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+        <div id="grafico"></div>
+
+   
     <script>
+ const b_usuario = document.getElementById('b_usuario');
+ b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+
+        function exibirGrafico() {
+            document.getElementById("grafico").innerHTML +=
+    ` <div id="graficos">
+         <div class="ranking">
+            <canvas id="myChart"></canvas>
+         </div>
+     </div>` ;
+            obterDadosGrafico();
+        }
+
+        function obterDadosGrafico() {
+        fetch(`/ponto/ultimas/`, { cache: 'no-store' })
+            .then(function (response) {
+                if (response.ok) {
+                    response.json().then(function (resposta) {
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                        resposta.reverse();
+                        plotarGrafico(resposta);
+                    });
+                } else {
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+
+    
 
 
-    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+    function plotarGrafico(resposta) {
+        console.log('iniciando plotagem do gráfico...');
 
+        let labels = [];
+        let dados = {
+            labels: labels,
+            datasets: [{
+                label: 'Pontos usuário',
+                
+                borderWidth: 2,
+                borderColor: 'white',
+                data: [],
+                hoverBackgroundColor: '#4E855D  '
+            }]
+            
+        };
 
+        console.log('Dados recebidos para plotar o gráfico:', resposta);
 
-        const ctx = document.getElementById('myChart').getContext('2d');
-        
-        const gradient = ctx.createLinearGradient(0, 0, 0, 400);
-        gradient.addColorStop(0, 'rgba(0,212,255,1)');
-        gradient.addColorStop(1, 'rgba(111,251,174,1)');
+        for (let i = 0; i < resposta.length; i++) {
+            var registro = resposta[i];
+            labels.push(registro.nome);
+            dados.datasets[0].data.push(registro.pontuacao);
+            // dados.datasets[1].data.push(registro.erros);
+        }
 
-        const myChart = new Chart(ctx, {
+        console.log('Labels:', labels);
+        console.log('Dados do Dataset:', dados.datasets);
+
+        const config = {
             type: 'bar',
-            data: {
-                labels: ['Usuario A', 'Usuario x', 'Usuario Y', 'Usuario Z', 'Usuario C', 'UsuarioB', 'UsuarioD'],
-                datasets: [{
-                    label: 'Pontos usuário',
-                    backgroundColor: gradient,
-                    borderWidth: 2,
-                    borderColor: 'black',
-                    data: [5, 2, 2, 2, 2, 2, 2],
-                    hoverBackgroundColor: '#4E855D'
-
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        suggestedMin: 0,
-                        suggestedMax: 5,
-                        ticks: {
-                            color: 'black',
-                            font: {
-                                size: 30
+            data: dados,
+                options: {
+                    scales: {
+                        y: {
+                            suggestedMin: 0,
+                            suggestedMax: 5,
+                            ticks: {
+                                color: 'black',
+                                font: {
+                                    size: 30
+                                }
+                            },
+                            grid: {
+                                color: '#256737'
+                            },
+                            beginAtZero: true
+                        },
+                        x: {
+                            ticks: {
+                                color: 'black',
+                                font: {
+                                    size: 20
+                                }
+                            },
+                            grid: {
+                                color: '#256737'
                             }
-                        },
-                        grid: {
-                            color: '#256737'
-                        },
-                        beginAtZero: true
-                    },
-                    x: {
-                        ticks: {
-                            color: 'black',
-                            font: {
-                                size: 20
-                            }
-                        },
-                        grid: {
-                            color: '#256737'
                         }
-                    }
-                },
-                plugins: {
-                    legend: {
-                        labels: {
-                            color: 'black',
-                            font: {
-                                size: 21
+                    },
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: 'black',
+                                font: {
+                                    size: 21
+                                }
                             }
                         }
                     }
                 }
+            
+        };
 
-            }
-        });
+        let ctx = document.getElementById('myChart').getContext('2d');
+        let myChart = new Chart(ctx, config
+            
+        );
+            }
+
+         
     </script>
