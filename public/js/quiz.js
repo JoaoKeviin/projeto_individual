@@ -40,7 +40,7 @@ var quizPerguntas = [
         d: "Causa Instabilidade na partida",
         correto: "a",
     },
-    // Adicione mais perguntas aqui
+  
 ];
 
 // Elementos DOM

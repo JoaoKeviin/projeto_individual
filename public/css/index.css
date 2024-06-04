@@ -172,6 +172,11 @@ nav a:hover {
     color: white;
 }
 
+.mensagemFutebol .negrito{
+    font-weight: bold;
+    
+}
+
 
 .social .container .relatoFutebol {
     display: flex;

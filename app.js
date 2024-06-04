@@ -19,6 +19,7 @@ var indexRouter = require("./src/routes/index");
 var usuarioRouter = require("./src/routes/usuarios");
 var resultadoRouter = require("./src/routes/resultado")
 var pontoRouter = require("./src/routes/ponto")
+var dashUserRouter = require("./src/routes/dashUser")
 
 
 app.use(express.json());
@@ -31,6 +32,7 @@ app.use("/", indexRouter);
 app.use("/usuarios", usuarioRouter);
 app.use("/resultado", resultadoRouter);
 app.use("/ponto", pontoRouter);
+app.use("/dashUser", dashUserRouter);
 app.listen(PORTA_APP, function () {
     console.log(`
     ##   ##  ######   #####             ####       ##     ######     ##              ##  ##    ####    ######  

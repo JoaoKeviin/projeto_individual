@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./dashboard.css">
+    <link rel="stylesheet" href="./dashUsuario.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <title>Document</title>
 </head>
@@ -18,11 +18,11 @@
         <div class="nav">
             <ul>
 
-                <li>Seja Bem Vindo ao Ranking</li>
+                <li>Seja Bem Vindo a sua evolução</li>
                 <li>|</li>
                 <li><a href="../dashboard/inicio.html">Exit</a></li>
                 <li> Olá, <span id="b_usuario"> usuário</span>!</li>
-                <li><a href="../dashboard/dashUsuario.html">Veja sua evolução</a></li>
+                <li><a href="../dashboard/dashboard.html">Voltar ao Ranking</a></li>
             </ul>
         </div>
     </div>
@@ -47,7 +47,8 @@
         }
 
         function obterDadosGrafico() {
-        fetch(`/ponto/ultimas/`, { cache: 'no-store' })
+            var ID_USUARIO = sessionStorage.getItem("ID_USUARIO");
+        fetch(`/dashUser/usuario/${ID_USUARIO}`, { cache: 'no-store' })
             .then(function (response) {
                 if (response.ok) {
                     response.json().then(function (resposta) {
@@ -97,7 +98,7 @@
         console.log('Dados do Dataset:', dados.datasets);
 
         const config = {
-            type: 'bar',
+            type: 'line',
             data: dados,
                 options: {
                     scales: {
