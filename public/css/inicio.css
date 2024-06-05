@@ -87,56 +87,62 @@ ul li a {
 
 .questionario1 img{
   display: flex;
-  width: 200px;
-  height: 200px;
+  width: 221px;
+  height: 199px;
+  margin-left: 1vw;
 }
 
 .questionario1 p{
   display: flex;
-  margin-top: 10px;
+  margin-top: 26px;
   width: 300px;
   color: white;
 }
 
 .questionario1 button{
   display: flex;
-  padding: 3px 30px 0px;
+  padding: 7px 62px 7px;
   text-align: center;
   background-color: black;
   color: white;
   border-radius: 5px;
-  margin-left: 60px;
+  margin-left: 36px;
+  margin-top: 2vh;
 }
 
 .questionario1 button:hover{
-  background-color:#4E855D;
+  background-color: white;
+  color: black;
+  opacity: 0.20s;
 }
 
 .Ranking img{
   display: flex;
-  width: 200px;
-  height: 260px;
+  width: 219px;
+  height: 282px;
   margin-top: -30px;
 }
 
 .Ranking p{
   display: flex;
-  margin-top: -30px;
-  width: 200px;
-  color: white;
+    margin-top: -30px;
+    width: 231px;
+    color: white;
 }
 
 .Ranking button{
   display: flex;
-  padding: 3px 30px 0px;
+  padding: 7px 51px 7px;
   margin-top: 15px;
   text-align: center;
   background-color: black;
   color: white;
   border-radius: 5px;
-  margin-left: 40px;
+  margin-left: 34px;
 }
 
 .Ranking button:hover{
-  background-color:#4E855D;
+  background-color: white;
+  color: black;
+  opacity: 0.20s;
 }

@@ -15,21 +15,23 @@
         <div class="titulo">
             <h1>FutLife</h1>
         </div>
+      
         <div class="nav">
             <ul>
 
                 <li>Seja Bem Vindo a sua evolução</li>
                 <li>|</li>
-                <li><a href="../dashboard/inicio.html">Exit</a></li>
+                <li><a href="../dashboard/inicio.html">Voltar</a></li>
                 <li> Olá, <span id="b_usuario"> usuário</span>!</li>
                 <li><a href="../dashboard/dashboard.html">Voltar ao Ranking</a></li>
             </ul>
         </div>
+       
     </div>
+    <div class="kpi"><p>Seus pontos</p></div>
 
 
-
-        <div id="grafico"></div>
+        <div id="grafico"></div>    
 
    
     <script>
@@ -75,10 +77,11 @@
         let dados = {
             labels: labels,
             datasets: [{
-                label: 'Pontos usuário',
+                label: '',
                 
                 borderWidth: 2,
                 borderColor: 'white',
+            
                 data: [],
                 hoverBackgroundColor: '#4E855D  '
             }]

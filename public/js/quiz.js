@@ -80,20 +80,25 @@ function carregarQuiz() {
 
 // Desmarcar todas as respostas
 function desmarcarRespostas() {
-    respostaEls.forEach(function(respostaEl) {
-        respostaEl.checked = false;
-    });
+    for (var i = 0; i < respostaEls.length; i++) {
+        respostaEls[i].checked = false;
+    }
 }
 
 // Obter resposta selecionada
 function obterSelecionada() {
     var resposta;
-    respostaEls.forEach(function(respostaEl) {
-        if (respostaEl.checked) {
-            resposta = respostaEl.id;
+    for (var i = 0; i < respostaEls.length; i++) {
+        if (respostaEls[i].checked) {
+            resposta = respostaEls[i].id;
         }
-    });
+    }
     return resposta;
+}
+
+// Calcular pontuação média
+function calcularPontuacaoMedia(pontuacao, totalPerguntas) {
+    return (pontuacao / totalPerguntas) * 100;
 }
 
 // Enviar resposta e carregar próxima pergunta
@@ -107,6 +112,9 @@ submitBtn.addEventListener('click', function() {
         if (quizAtual < quizPerguntas.length) {
             carregarQuiz();
         } else {
+            // Calcular a pontuação média
+            var pontuacaoMedia = calcularPontuacaoMedia(pontuacao, quizPerguntas.length);
+
             // Enviar resultado ao servidor
             fetch(`/resultado/registrar/${ID_USUARIO}`, {
                 method: "POST",
@@ -125,6 +133,7 @@ submitBtn.addEventListener('click', function() {
                 console.log("Resultado registrado com sucesso:", data);
                 quizContainer.innerHTML = `
                     <h2 style="margin-top: 130px;">Você respondeu corretamente ${pontuacao}/${quizPerguntas.length} perguntas.</h2>
+                    <h3>Sua pontuação média é de: ${pontuacaoMedia.toFixed(0)}%</h3>
                     <button onclick="location.reload()">Recomeçar</button>
                 `;
             })
@@ -132,6 +141,7 @@ submitBtn.addEventListener('click', function() {
                 console.error("Erro ao registrar o resultado:", error);
                 quizContainer.innerHTML = `
                     <h2 style="margin-top: 120px;">Você respondeu corretamente ${pontuacao}/${quizPerguntas.length} perguntas.</h2>
+                    <h3>Sua pontuação média é de: ${pontuacaoMedia.toFixed(0)}%</h3>
                     <button onclick="location.reload()">Recomeçar</button>
                 `;
             });

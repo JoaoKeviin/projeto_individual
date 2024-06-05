@@ -86,6 +86,7 @@ nav a:hover {
     display: flex;
     max-width: 400px;
     margin-left: 200px;
+    margin-top: 27vh;
     transition: transform 0.5s ease; /* Transição suave */
     transform: scale(1);
 }
@@ -99,6 +100,11 @@ nav a:hover {
     display: flex;
     box-sizing: border-box; /* Certifica-se que padding não aumenta a largura total */
     margin: 0 auto; /* Centraliza o container */
+}
+
+.banner p{
+    display: flex;
+    margin-top: 20vh;
 }
 
 .header .container {
@@ -298,15 +304,16 @@ nav a:hover {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    height: 110px;
+    height: 75px;
     flex-direction: column;
     margin-left: 550px;
 }
 
 .imagemJK img {
     display: flex;
-    max-width: 300px;
-    margin-top: 194px;
+    max-width: 224px;
+    margin-top: 130px;
+    margin-left: -1vw;
 }
 
 .social .usuario {
@@ -356,6 +363,33 @@ transform: scale(1.2); /* Aumenta o tamanho da imagem */
     color: white;
 }
 
+.onu{
+    display: flex;
+    height: 100vh;
+    text-align: center;
+    background: linear-gradient(45deg, #3d724b, transparent);
+}
+
+.desenvolvimento{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 24vw;
+    color: white;
+}
+
+.desenvolvimento img{
+    display: flex;
+    margin-left: 3vw;
+}
+
+.texto{
+    display: flex;
+
+    width: 40vw;
+}
+
+
 .footer {
     display: flex;
     background-color: #c3f3cf;
@@ -369,3 +403,16 @@ transform: scale(1.2); /* Aumenta o tamanho da imagem */
     margin-left: 450px;
 }
 
+body::-webkit-scrollbar {
+    width: 12px;               /* width of the entire scrollbar */
+  }
+  
+  body::-webkit-scrollbar-track {
+    background: #8DB899;        /* color of the tracking area */
+  }
+  
+  body::-webkit-scrollbar-thumb {
+    background-color: #628c6c;  
+    border-radius: 20px;      
+    border: 3px solid black;  
+  }
